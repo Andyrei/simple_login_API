@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useAuthContext from '../context/AuthContext';
 
-export default function Login({loginUser}) {
+export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState([]);
-
+    const {login, errors} = useAuthContext();
     
 
     const handleLogin = async (e) => { 
         e.preventDefault();
-        loginUser(email, password, setErrors, '/');
+        
+        login({email, password})
     }
 
 return (  

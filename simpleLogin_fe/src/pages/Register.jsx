@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Register({registerUser}) {
+export default function Register() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -10,7 +10,6 @@ export default function Register({registerUser}) {
     const handleSubmit = async (e) => {
         e.preventDefault() 
         
-        registerUser(name, email, password, passwordConfirm, '/')
     }
     
 return (
@@ -34,7 +33,7 @@ return (
                         className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                     </div>
-                    <p className='text-red-400'>error</p>
+                    {errors.name && <p className='text-red-400'>{errors.name}</p>}
                 </div>
                 <div className="mb-2">
                     <div className="">
@@ -50,7 +49,7 @@ return (
                         className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                     </div>
-                    <p className='text-red-400'>error</p>
+                    {errors.email && <p className='text-red-400'>{errors.email}</p>}
                 </div>
                 <div className="mb-2">
                     <div className="">
@@ -69,7 +68,7 @@ return (
                         className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                     </div>
-                    <p className='text-red-400'>error</p>
+                    {errors.password && <p className='text-red-400'>{errors.password}</p>}
                 </div>
                 <div className="mb-2">
                     <div className="">
@@ -88,7 +87,7 @@ return (
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
                     </div>
-                    <p className='text-red-400'>error</p>
+                    {errors.password_confirmation && <p className='text-red-400'>{errors.password_confirmation}</p>}
                 </div>
                 <div className="mt-6">
                     <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
